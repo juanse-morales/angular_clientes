@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Cliente } from '../cliente';
 import { ClienteService } from '../cliente.service';
 import swal from 'sweetalert2';
+import { AuthService } from 'src/app/usuarios/auth.service';
 
 @Component({
   selector: 'detalle-cliente',
@@ -15,6 +16,7 @@ export class DetalleComponent implements OnInit {
   private fotoSeleccionada: File;
 
   constructor(private clienteService: ClienteService,
+    public authService: AuthService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {

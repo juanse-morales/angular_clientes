@@ -1,9 +1,21 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../usuarios/auth.service';
+import { Router } from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html'
+  selector: 'app-header',
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent {
-    title: string = 'App Angular - Spring';
+  title: string = 'App Angular - Spring';
+
+  constructor(public authService:AuthService, private router:Router){}
+
+  logout(): void {
+    let username = this.authService.usuario.username;
+    this.authService.logout();
+    swal.fire('Cerrar sesión',`Hola ${username}, has cerrado sesión con éxito!`, 'success');
+    this.router.navigate(['/login']);
+  }
 }

@@ -4,6 +4,7 @@ import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../usuarios/auth.service';
 
 @Component({
   selector: 'app-clientes',
@@ -16,6 +17,7 @@ export class ClientesComponent implements OnInit {
   paginador: any;
 
   constructor(private clienteService: ClienteService,
+    public authService: AuthService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
